@@ -1,0 +1,706 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="description" content="Browse, search, preview, and order printed or digital maps of Myanmar.">
+    <title>Download Myanmar Maps | DPS Map</title>
+
+    <link rel="stylesheet" href="map.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <header class="page-header">
+        <div class="page-header-inner">
+            <h1 data-en="Map Download" data-my="မြေပုံဒေါင်းလုဒ်">Map Download</h1>
+        </div>
+    </header>
+
+    <main id="main-content">
+    <section class="popular-section" aria-labelledby="popularTitle">
+        <div class="popular-heading"><p class="eyebrow">EXPLORE MAPS</p><h1 id="popularTitle">Popular maps</h1><p>Quick access to the most viewed places in Myanmar.</p></div>
+        <div class="popular-maps">
+            <button class="popular-card" type="button" onclick="openPopularMap('Yangon Region','assets/regions/yangon.jpg')"><span class="popular-card-image"><img src="assets/regions/yangon.jpg" alt="Yangon Region Map"><span class="popular-card-overlay" aria-hidden="true" data-en="Yangon Region map" data-my="ရန်ကုန်တိုင်းဒေသကြီးမြေပုံ">Yangon Region map</span></span><span class="popular-card-label">Yangon Region Map</span></button>
+            <button class="popular-card" type="button" onclick="openPopularMap('Yangon City','assets/cities/city-images/city/မြို့/ရန်ကုန်တိုင်း/ရန်ကုန်မြို့.jpg')"><span class="popular-card-image"><img src="assets/cities/city-images/city/မြို့/ရန်ကုန်တိုင်း/ရန်ကုန်မြို့.jpg" alt="Yangon City Map"><span class="popular-card-overlay" aria-hidden="true" data-en="Yangon City map" data-my="ရန်ကုန်မြို့မြေပုံ">Yangon City map</span></span><span class="popular-card-label">Yangon City Map</span></button>
+            <button class="popular-card popular-card--full-map" type="button" onclick="openPopularMap('Myanmar','assets/maps/myanmar-english.jpg')"><span class="popular-card-image"><img src="assets/maps/myanmar-english.jpg" alt="Myanmar Map"><span class="popular-card-overlay" aria-hidden="true" data-en="Myanmar map in English" data-my="အင်္ဂလိပ်ဘာသာ မြန်မာနိုင်ငံမြေပုံ">Myanmar map in English</span></span><span class="popular-card-label">Myanmar Map</span></button>
+            <button class="popular-card" type="button" onclick="openPopularMap('Mandalay','assets/regions/mandalay.jpg')"><span class="popular-card-image"><img src="assets/regions/mandalay.jpg" alt="Mandalay Map"><span class="popular-card-overlay" aria-hidden="true" data-en="Mandalay Region map" data-my="မန္တလေးတိုင်းဒေသကြီးမြေပုံ">Mandalay Region map</span></span><span class="popular-card-label">Mandalay Map</span></button>
+            <button class="popular-card" type="button" onclick="openPopularMap('Naypyidaw','assets/regions/naypyidaw.png')"><span class="popular-card-image"><img src="assets/regions/naypyidaw.png" alt="Naypyidaw Map"><span class="popular-card-overlay" aria-hidden="true" data-en="Naypyidaw map" data-my="နေပြည်တော်မြေပုံ">Naypyidaw map</span></span><span class="popular-card-label">Naypyidaw Map</span></button>
+            <button class="popular-card" type="button" onclick="openPopularMap('Bagan','assets/cities/city-images/city/မြို့/မန္တလေးတိုင်း/Bagan.jpg')"><span class="popular-card-image"><img src="assets/cities/city-images/city/မြို့/မန္တလေးတိုင်း/Bagan.jpg" alt="Bagan Map"><span class="popular-card-overlay" aria-hidden="true" data-en="Bagan city map" data-my="ပုဂံမြို့မြေပုံ">Bagan city map</span></span><span class="popular-card-label">Bagan Map</span></button>
+        </div>
+    </section>
+
+    <div class="search-container">
+
+        <!-- Search Bar -->
+        <div class="search-field">
+            <input type="search" id="searchInput" class="search-box" placeholder="Search regions, townships, districts, or cities..." autocomplete="off" aria-controls="searchResults" aria-expanded="false">
+            <div id="searchResults" class="search-results" role="listbox" hidden></div>
+        </div>
+
+        <button type="button" id="clearSelection" class="clear-button" onclick="clearSelection()">Clear selection</button>
+
+        <!-- Myanmar Map -->
+        <div class="dropdown">
+
+            <button class="dropdown-btn"
+                onclick="toggleDropdown('mapOptions')">
+
+                <span id="mapText">Myanmar Map</span>
+                <span class="arrow">▼</span>
+
+            </button>
+
+            <div class="dropdown-content" id="mapOptions">
+
+                <button onclick="selectMap('en')">
+                    English
+                </button>
+
+                <button onclick="selectMap('my')">
+                    Myanmar
+                </button>
+
+            </div>
+
+        </div>
+
+        <div class="dropdown">
+
+     <button class="dropdown-btn"
+        onclick="toggleDropdown('districtOptions')">
+
+        <span id="districtText">District</span>
+        <span class="arrow">▼</span>
+
+     </button>
+
+     <div class="dropdown-content district-list" id="districtOptions">
+
+        <div class="district-group">
+            <h4>Yangon Districts</h4>
+            <button onclick="selectDistrict('Hmawbi')">Hmawbi</button>
+            <button onclick="selectDistrict('Dagon Myothit')">Dagon Myothit</button>
+            <button onclick="selectDistrict('Insein')">Insein</button>
+            <button onclick="selectDistrict('Kamayut')">Kamayut</button>
+            <button onclick="selectDistrict('Twante')">Twante</button>
+            <button onclick="selectDistrict('Botahtaung')">Botahtaung</button>
+            <button onclick="selectDistrict('Mingaladon')">Mingaladon</button>
+        </div>
+
+        <div class="district-group">
+            <h4>Mandalay Districts</h4>
+            <button onclick="selectDistrict('Kyaukse')">Kyaukse</button>
+            <button onclick="selectDistrict('Nyaung-U')">Nyaung-U</button>
+            <button onclick="selectDistrict('Myingyan')">Myingyan</button>
+            <button onclick="selectDistrict('Pyin Oo Lwin')">Pyin Oo Lwin</button>
+        </div>
+
+        <div class="district-group">
+            <h4>Ayeyarwady Districts</h4>
+            <button onclick="selectDistrict('Maubin')">Maubin</button>
+            <button onclick="selectDistrict('Kyonpyaw')">Kyonpyaw</button>
+        </div>
+
+        <div class="district-group">
+            <h4>Magway Districts</h4>
+            <button onclick="selectDistrict('Thayet')">Thayet</button>
+        </div>
+
+        <div class="district-group">
+            <h4>Sagaing Districts</h4>
+            <button onclick="selectDistrict('Katha')">Katha</button>
+            <button onclick="selectDistrict('Shwebo')">Shwebo</button>
+        </div>
+
+        <div class="district-group">
+            <h4>Tanintharyi Districts</h4>
+            <button onclick="selectDistrict('Bokpyin')">Bokpyin</button>
+        </div>
+
+        <div class="district-group">
+            <h4>Kachin Districts</h4>
+            <button onclick="selectDistrict('Bhamo')">Bhamo</button>
+            <button onclick="selectDistrict('Myitkyina')">Myitkyina</button>
+        </div>
+
+        <div class="district-group">
+            <h4>Chin Districts</h4>
+            <button onclick="selectDistrict('Tiddim')">Tiddim</button>
+        </div>
+
+    </div>
+</div>
+    <!-- City -->
+<div class="dropdown">
+
+    <button class="dropdown-btn"
+        onclick="toggleDropdown('cityOptions')">
+
+        <span id="cityText">City</span>
+        <span class="arrow">▼</span>
+
+    </button>
+
+    <div class="dropdown-content district-list" id="cityOptions">
+
+        <div class="district-group">
+            <h4>Yangon Cities</h4>
+            <button onclick="selectCity('Taikkyi')">Taikkyi</button>
+            <button onclick="selectCity('South Dagon')">South Dagon</button>
+            <button onclick="selectCity('Yangon')">Yangon</button>
+            <button onclick="selectCity('Hlaingtharyar (West)')">Hlaingtharyar (West)</button>
+        </div>
+
+        <div class="district-group">
+            <h4>Mandalay Cities</h4>
+            <button onclick="selectCity('Kyaukse')">Kyaukse</button>
+            <button onclick="selectCity('Pyin Oo Lwin')">Pyin Oo Lwin</button>
+            <button onclick="selectCity('Meiktila')">Meiktila</button>
+            <button onclick="selectCity('Kyaukpadaung')">Kyaukpadaung</button>
+            <button onclick="selectCity('Bagan')">Bagan</button>
+        </div>
+
+        <div class="district-group">
+            <h4>Ayeyarwady Cities</h4>
+            <button onclick="selectCity('Pathein')">Pathein</button>
+            <button onclick="selectCity('Hinthada')">Hinthada</button>
+            <button onclick="selectCity('Maubin')">Maubin</button>
+            <button onclick="selectCity('Mawlamyinegyun')">Mawlamyinegyun</button>
+            <button onclick="selectCity('Pyapon')">Pyapon</button>
+        </div>
+
+        <div class="district-group">
+            <h4>Magway Cities</h4>
+            <button onclick="selectCity('Sinbaungwe')">Sinbaungwe</button>
+            <button onclick="selectCity('Chauk Gyi')">Chauk Gyi</button>
+            <button onclick="selectCity('Sagu')">Sagu</button>
+            <button onclick="selectCity('Chauk')">Chauk</button>
+            <button onclick="selectCity('Magway')">Magway</button>
+            <button onclick="selectCity('Yenangyaung')">Yenangyaung</button>
+        </div>
+
+        <div class="district-group">
+            <h4>Bago Cities</h4>
+            <button onclick="selectCity('Bago')">Bago</button>
+            <button onclick="selectCity('Thanatpin')">Thanatpin</button>
+            <button onclick="selectCity('Pyinzaloke')">Pyinzaloke</button>
+            <button onclick="selectCity('Minhla')">Minhla</button>
+            <button onclick="selectCity('Pyay')">Pyay</button>
+            <button onclick="selectCity('Taungoo')">Taungoo</button>
+            <button onclick="selectCity('Yedashe')">Yedashe</button>
+        </div>
+
+        <div class="district-group">
+            <h4>Naypyidaw</h4>
+            <button onclick="selectCity('Naypyidaw')">Naypyidaw</button>
+        </div>
+
+        <div class="district-group">
+            <h4>Sagaing Cities</h4>
+            <button onclick="selectCity('Sagaing')">Sagaing</button>
+            <button onclick="selectCity('Homalin')">Homalin</button>
+            <button onclick="selectCity('Banmauk')">Banmauk</button>
+            <button onclick="selectCity('Shwebo')">Shwebo</button>
+            <button onclick="selectCity('Mingin')">Mingin</button>
+        </div>
+
+        <div class="district-group">
+            <h4>Tanintharyi Cities</h4>
+            <button onclick="selectCity('Kawthaung')">Kawthaung</button>
+            <button onclick="selectCity('Myeik')">Myeik</button>
+            <button onclick="selectCity('Dawei')">Dawei</button>
+        </div>
+
+        <div class="district-group">
+            <h4>Kachin State</h4>
+            <button onclick="selectCity('Hpakant')">Hpakant</button>
+            <button onclick="selectCity('Myitkyina')">Myitkyina</button>
+        </div>
+
+        <div class="district-group">
+            <h4>Kayin State</h4>
+            <button onclick="selectCity('Myawaddy')">Myawaddy</button>
+        </div>
+
+        <div class="district-group">
+            <h4>Mon State</h4>
+            <button onclick="selectCity('Mawlamyine')">Mawlamyine</button>
+        </div>
+
+        <div class="district-group">
+            <h4>Rakhine State</h4>
+            <button onclick="selectCity('Sittwe')">Sittwe</button>
+        </div>
+
+        <div class="district-group">
+            <h4>Southern Shan State</h4>
+            <button onclick="selectCity('Taunggyi')">Taunggyi</button>
+            <button onclick="selectCity('Hopong')">Hopong</button>
+            <button onclick="selectCity('Nyaungshwe')">Nyaungshwe</button>
+            <button onclick="selectCity('Loilen')">Loilen</button>
+            <button onclick="selectCity('Hsi Hseng')">Hsi Hseng</button>
+        </div>
+
+        <div class="district-group">
+            <h4>Eastern Shan State</h4>
+            <button onclick="selectCity('Kengtung')">Kengtung</button>
+            <button onclick="selectCity('Tachileik')">Tachileik</button>
+        </div>
+
+        <div class="district-group">
+            <h4>Northern Shan State</h4>
+            <button onclick="selectCity('Kokang')">Kokang</button>
+            <button onclick="selectCity('Lashio')">Lashio</button>
+        </div>
+
+    </div>
+
+</div>
+
+    <div class="dropdown">
+      <button class="dropdown-btn" onclick="toggleDropdown('regionOptions')"><span id="regionText">Region / State</span><span class="arrow">▼</span></button>
+      <div class="dropdown-content district-list" id="regionOptions" aria-label="Regions and states"></div>
+    </div>
+    <div class="dropdown">
+      <button class="dropdown-btn" onclick="toggleDropdown('townshipOptions')"><span id="townshipText">Township</span><span class="arrow">▼</span></button>
+      <div class="dropdown-content district-list" id="townshipOptions" aria-label="Townships"></div>
+    </div>
+    <dialog id="mapDialog" class="map-dialog" aria-labelledby="imageTitle">
+      <div class="map-dialog-header">
+        <h2 id="imageTitle">Myanmar Map</h2>
+        <button type="button" class="map-dialog-close" onclick="closeMapPopup()" aria-label="Close map">×</button>
+      </div>
+      <img id="selectedImage" src="assets/maps/myanmar-english.jpg" alt="Map of Myanmar in English">
+      <p id="imageCaption">Choose a district or city to view its map.</p>
+      <section id="downloadActions" class="download-actions" hidden aria-label="Download options">
+        <button type="button" class="download-button free-button" onclick="showDownloadForm('free')">Free Download</button>
+        <button type="button" class="download-button request-button" onclick="showDownloadForm('request')">Request Download</button>
+      </section>
+      <section id="downloadForms" class="download-forms" hidden>
+        <form id="freeDownloadForm" class="download-form shared-download-form" hidden>
+          <h3>Free Download</h3>
+          <div class="shared-form-grid">
+            <label>Full name<input name="name" autocomplete="name" placeholder="Your name" required></label>
+            <label>Email address<input name="email" type="email" autocomplete="email" placeholder="name@example.com" required></label>
+            <label>Phone number<input name="phone" type="tel" autocomplete="tel" placeholder="09xxxxxxxxx" required></label>
+            <label>Reason for download<input name="reason" placeholder="Tell us why you need this map" required></label>
+          </div>
+          <button type="submit" class="download-button free-button">Submit &amp; download map</button>
+        </form>
+        <form id="requestDownloadForm" class="download-form request-form" hidden>
+          <h3>Request Download</h3>
+          <div class="shared-form-grid">
+            <label>Full name<input name="name" autocomplete="name" placeholder="Your name" required></label>
+            <label>Email address<input name="email" type="email" autocomplete="email" placeholder="name@example.com" required></label>
+            <label>Phone number<input name="phone" type="tel" autocomplete="tel" placeholder="09xxxxxxxxx" required></label>
+            <label>Map product / print type<select id="requestMapProduct" name="mapProduct" required><option value="" selected disabled>Select a product</option><option value="vinyl" data-rate="15000">Vinyl — 15,000 MMK per sq ft</option><option value="photopaper" data-rate="27000">Photopaper — 27,000 MMK per sq ft</option><option value="sticker" data-rate="27000">Sticker — 27,000 MMK per sq ft</option><option value="color-a3" data-price="35000">Color print — A3 (35,000 MMK)</option><option value="bw-a3" data-price="25000">Black &amp; white print — A3 (25,000 MMK)</option><option value="pdf" data-price="350000">Soft copy — PDF (350,000 MMK)</option><option value="jpg" data-price="150000">Soft copy — JPG (150,000 MMK)</option></select></label>
+            <label>Map size<select id="requestMapSize" name="mapSize" required disabled><option value="" selected disabled>Select a product first</option><option value="2x3">2 × 3 ft</option><option value="3x6">3 × 6 ft</option><option value="4x3">4 × 3 ft</option><option value="4x6">4 × 6 ft</option><option value="4x8">4 × 8 ft</option><option value="6x9">6 × 9 ft</option><option value="custom">Custom dimensions</option></select></label>
+            <div id="customDimensions" class="custom-dimensions" hidden>
+              <label>Width (ft)<input id="customWidth" type="number" min="0.1" step="0.1" inputmode="decimal" placeholder="Width in feet"></label>
+              <label>Height (ft)<input id="customHeight" type="number" min="0.1" step="0.1" inputmode="decimal" placeholder="Height in feet"></label>
+            </div>
+            <p id="requestPrice" class="request-price wide-field" aria-live="polite">Select a product and size to calculate the price.</p>
+            <label>Reason for download<input name="reason" placeholder="Tell us why you need this map" required></label>
+          </div>
+          <button type="submit" class="download-button request-button">Submit request</button>
+        </form>
+        <p id="downloadFormStatus" class="download-form-status" role="status" aria-live="polite"></p>
+      </section>
+      <section id="kpayPanel" class="kpay-panel" hidden aria-live="polite">
+          <h3>Pay with KBZPay</h3>
+          <p id="kpayOrderSummary" class="kpay-order-summary"></p>
+          <p>Scan the KBZPay QR code and enter the displayed total.<br><strong>Aye Minn Oo (*****0177)</strong></p>
+          <div class="kpay-qr-frame"><img src="assets/payment/kpay-qr.png" alt="KBZPay payment QR code" onerror="this.hidden=true; this.nextElementSibling.hidden=false"><p hidden>Add your KBZPay QR image as <code>assets/payment/kpay-qr.png</code>.</p></div>
+          <button type="button" class="download-button" onclick="hideKpayPanel()">Back to map</button>
+      </section>
+    </dialog>
+    </main>
+
+    <script src="map.js"></script>
+    <script>
+        (() => {
+            const translations = {
+                "Skip to content": "အကြောင်းအရာသို့ ကျော်သွားရန်",
+                "Announcement": "ကြေညာချက်",
+                "Primary navigation": "အဓိကလမ်းညွှန်",
+                "Language": "ဘာသာစကား",
+                "Search": "ရှာဖွေရန်",
+                "Open menu": "မီနူးဖွင့်ရန်",
+                "Close menu": "မီနူးပိတ်ရန်",
+                "Precision Cartography": "တိကျသော မြေပုံရေးဆွဲခြင်း",
+                "DPS Map": "DPS Map",
+                "MAP DOWNLOADS": "မြေပုံဒေါင်းလုဒ်များ",
+                "Map Download": "မြေပုံဒေါင်းလုဒ်",
+                "EXPLORE MAPS": "မြေပုံများကို လေ့လာရန်",
+                "Popular maps": "လူကြိုက်များသောမြေပုံများ",
+                "Map of Yangon and surrounding areas": "ရန်ကုန်မြို့နှင့် အနီးပတ်ဝန်းကျင်မြေပုံ",
+                "English-language map of Myanmar": "အင်္ဂလိပ်ဘာသာဖြင့် မြန်မာနိုင်ငံမြေပုံ",
+                "Map of Mandalay city and surrounding area": "မန္တလေးမြို့နှင့် အနီးပတ်ဝန်းကျင်မြေပုံ",
+                "Map of Naypyidaw city and surrounding area": "နေပြည်တော်မြို့နှင့် အနီးပတ်ဝန်းကျင်မြေပုံ",
+                "Map of Bagan and nearby archaeological sites": "ပုဂံနှင့် အနီးရှိ ရှေးဟောင်းသုတေသနနေရာများမြေပုံ",
+                "Download Myanmar Maps": "မြန်မာနိုင်ငံမြေပုံများ ဒေါင်းလုဒ်ရယူရန်",
+                "Quick access to the most viewed places in Myanmar.": "မြန်မာနိုင်ငံရှိ လူကြည့်အများဆုံးနေရာများ၏ မြေပုံများကို လွယ်ကူစွာ ကြည့်ရှုနိုင်ပါသည်။",
+                "Explore popular maps or search by region, state, district, township, or city.": "လူကြိုက်များသောမြေပုံများကို ကြည့်ရှုပါ၊ သို့မဟုတ် တိုင်းဒေသကြီး၊ ပြည်နယ်၊ ခရိုင်၊ မြို့နယ်၊ မြို့အလိုက် ရှာဖွေပါ။",
+                "Search regions, townships, districts, or cities...": "တိုင်းဒေသကြီး၊ မြို့နယ်၊ ခရိုင် သို့မဟုတ် မြို့များကို ရှာဖွေပါ...",
+                "Search...": "ရှာဖွေရန်...",
+                "Clear selection": "ရွေးချယ်မှုများ ရှင်းလင်းရန်",
+                "Myanmar Map": "မြန်မာနိုင်ငံမြေပုံ",
+                "Myanmar": "မြန်မာနိုင်ငံ",
+                "English": "အင်္ဂလိပ်",
+                "Region / State": "တိုင်းဒေသကြီး / ပြည်နယ်",
+                "Township": "မြို့နယ်",
+                "District": "ခရိုင်",
+                "City": "မြို့",
+                "Yangon Map": "ရန်ကုန်မြေပုံ",
+                "Mandalay Map": "မန္တလေးမြေပုံ",
+                "Naypyidaw Map": "နေပြည်တော်မြေပုံ",
+                "Bagan Map": "ပုဂံမြေပုံ",
+                "Choose a district or city to view its map.": "မြေပုံကြည့်ရန် ခရိုင် သို့မဟုတ် မြို့တစ်ခုကို ရွေးချယ်ပါ။",
+                "Free Download": "အခမဲ့ဒေါင်းလုဒ်",
+                "Request Download": "ဒေါင်းလုဒ်တောင်းဆိုရန်",
+                "Full name": "အမည်အပြည့်အစုံ",
+                "Email address": "အီးမေးလ်လိပ်စာ",
+                "Phone number": "ဖုန်းနံပါတ်",
+                "Reason for download": "ဒေါင်းလုဒ်ရယူရသည့်အကြောင်းရင်း",
+                "Your name": "သင့်အမည်",
+                "Tell us why you need this map": "ဤမြေပုံကို အဘယ်ကြောင့်လိုအပ်ကြောင်း ရေးသားပါ",
+                "Map product / print type": "မြေပုံထုတ်ကုန် / ပုံနှိပ်အမျိုးအစား",
+                "Select a product": "ထုတ်ကုန်တစ်ခု ရွေးချယ်ပါ",
+                "Select a product first": "အရင်ဆုံး ထုတ်ကုန်ကို ရွေးချယ်ပါ",
+                "Vinyl — 15,000 MMK per sq ft": "ဗိုင်နိုင်း — တစ်စတုရန်းပေလျှင် ၁၅,၀၀၀ ကျပ်",
+                "Photopaper — 27,000 MMK per sq ft": "ဓာတ်ပုံစက္ကူ — တစ်စတုရန်းပေလျှင် ၂၇,၀၀၀ ကျပ်",
+                "Sticker — 27,000 MMK per sq ft": "စတစ်ကာ — တစ်စတုရန်းပေလျှင် ၂၇,၀၀၀ ကျပ်",
+                "Color print — A3 (35,000 MMK)": "ရောင်စုံပုံနှိပ် — A3 (၃၅,၀၀၀ ကျပ်)",
+                "Black & white print — A3 (25,000 MMK)": "အဖြူအမည်းပုံနှိပ် — A3 (၂၅,၀၀၀ ကျပ်)",
+                "Soft copy — PDF (350,000 MMK)": "Soft Copy — PDF (၃၅၀,၀၀၀ ကျပ်)",
+                "Soft copy — JPG (150,000 MMK)": "Soft Copy — JPG (၁၅၀,၀၀၀ ကျပ်)",
+                "Map size": "မြေပုံအရွယ်အစား",
+                "Custom dimensions": "စိတ်ကြိုက်အတိုင်းအတာ",
+                "2 × 3 ft": "၂ × ၃ ပေ",
+                "3 × 6 ft": "၃ × ၆ ပေ",
+                "4 × 3 ft": "၄ × ၃ ပေ",
+                "4 × 6 ft": "၄ × ၆ ပေ",
+                "4 × 8 ft": "၄ × ၈ ပေ",
+                "6 × 9 ft": "၆ × ၉ ပေ",
+                "Width (ft)": "အကျယ် (ပေ)",
+                "Height (ft)": "အမြင့် (ပေ)",
+                "Width in feet": "အကျယ်ကို ပေဖြင့်ထည့်ပါ",
+                "Height in feet": "အမြင့်ကို ပေဖြင့်ထည့်ပါ",
+                "Select a product and size to calculate the price.": "ဈေးနှုန်းတွက်ချက်ရန် ထုတ်ကုန်နှင့် အရွယ်အစားကို ရွေးချယ်ပါ။",
+                "Submit & download map": "တင်သွင်းပြီး မြေပုံဒေါင်းလုဒ်ရယူရန်",
+                "Submit request": "တောင်းဆိုမှုတင်သွင်းရန်",
+                "Pay with KBZPay": "KBZPay ဖြင့်ငွေပေးချေရန်",
+                "Scan the KBZPay QR code and enter the displayed total.": "KBZPay QR ကုဒ်ကို scan ဖတ်ပြီး ပြသထားသော စုစုပေါင်းငွေကို ထည့်သွင်းပါ။",
+                "Back to map": "မြေပုံသို့ပြန်သွားရန်",
+                "No matching maps found.": "ကိုက်ညီသောမြေပုံ မတွေ့ပါ။",
+                "Your map download has started.": "သင့်မြေပုံကို ဒေါင်းလုဒ်ရယူနေပါပြီ။",
+                "No map image is available for this selection.": "ဤရွေးချယ်မှုအတွက် မြေပုံပုံရိပ် မရရှိနိုင်ပါ။",
+                "Main Pages": "အဓိကစာမျက်နှာများ",
+                "Home": "ပင်မစာမျက်နှာ",
+                "About Us": "ကျွန်ုပ်တို့အကြောင်း",
+                "GIS Services": "GIS ဝန်ဆောင်မှုများ",
+                "Industrial Zones": "စက်မှုဇုန်များ",
+                "Valued Clients": "ကျေးဇူးတင်ရသော ဖောက်သည်များ",
+                "Downloads": "ဒေါင်းလုဒ်များ",
+                "Products": "ထုတ်ကုန်များ",
+                "Contact Us": "ဆက်သွယ်ရန်",
+                "Myanmar & Major Map Pages": "မြန်မာနိုင်ငံနှင့် အဓိကမြေပုံစာမျက်နှာများ",
+                "Popular City & Tourist Maps": "လူကြိုက်များသော မြို့နှင့် ခရီးသွားမြေပုံများ",
+                "Map & GIS Resources": "မြေပုံနှင့် GIS အရင်းအမြစ်များ",
+                "Services": "ဝန်ဆောင်မှုများ",
+                "Printing Services": "ပုံနှိပ်ဝန်ဆောင်မှုများ",
+                "Map Plotting": "မြေပုံပုံနှိပ်ခြင်း",
+                "Tracking": "ခြေရာခံဝန်ဆောင်မှု",
+                "Website Services": "ဝက်ဘ်ဆိုက်ဝန်ဆောင်မှုများ",
+                "Products & Downloads": "ထုတ်ကုန်များနှင့် ဒေါင်းလုဒ်များ",
+                "All Products": "ထုတ်ကုန်အားလုံး",
+                "Map Download": "မြေပုံဒေါင်းလုဒ်",
+                "Online Map Shop": "အွန်လိုင်းမြေပုံဆိုင်",
+                "Map Soft Copy": "မြေပုံ Soft Copy",
+                "Shop": "ဆိုင်",
+                "Company": "ကုမ္ပဏီ",
+                "Districts": "ခရိုင်များ",
+                "Administrative Boundaries": "အုပ်ချုပ်ရေးနယ်နိမိတ်များ",
+                "Shan": "ရှမ်း",
+                "Kachin": "ကချင်",
+                "Kayah": "ကယား",
+                "Rakhine": "ရခိုင်",
+                "Chin": "ချင်း",
+                "Mon": "မွန်",
+                "Bago": "ပဲခူး",
+                "Sagaing": "စစ်ကိုင်း",
+                "Magway": "မကွေး",
+                "Ayeyarwaddy": "ဧရာဝတီ",
+                "Inle": "အင်းလေး",
+                "Mrauk U": "မြောက်ဦး",
+                "Tourist Map": "ခရီးသွားမြေပုံ",
+                "House Number Map": "အိမ်နံပါတ်မြေပုံ",
+                "Yangon Bus Service": "ရန်ကုန်ဘတ်စ်ကားဝန်ဆောင်မှု",
+                "Bus Stop Map": "ဘတ်စ်ကားမှတ်တိုင်မြေပုံ",
+                "Population Map": "လူဦးရေမြေပုံ",
+                "Map Directory": "မြေပုံလမ်းညွှန်",
+                "Carto Map": "မြေပုံရေးဆွဲခြင်း",
+                "Permitted Area": "ခွင့်ပြုထားသောဧရိယာ",
+                "Jobs": "အလုပ်အကိုင်များ",
+                "We Are Hiring": "ဝန်ထမ်းခေါ်ယူနေပါသည်",
+                "Privacy Policy": "ကိုယ်ရေးအချက်အလက် မူဝါဒ",
+                "Terms & Conditions": "စည်းကမ်းနှင့် သတ်မှတ်ချက်များ",
+                "Contact DPS Map": "DPS Map သို့ ဆက်သွယ်ရန်",
+                "Myanmar mapping, GIS, address data, field surveying, design and printing since 1995.": "၁၉၉၅ ခုနှစ်မှစ၍ မြေပုံ၊ GIS၊ လိပ်စာအချက်အလက်၊ မြေပြင်တိုင်းတာခြင်း၊ ဒီဇိုင်းနှင့် ပုံနှိပ်ဝန်ဆောင်မှုများ ဆောင်ရွက်ပေးလျက်ရှိပါသည်။",
+                "Rm: 307, Yae Kyaw Complex, Pazundaung Township, Yangon": "အခန်း ၃၀၇၊ ရေကျော်ကွန်ပလက်စ်၊ ပုဇွန်တောင်မြို့နယ်၊ ရန်ကုန်",
+                "Contact DPS": "DPS သို့ ဆက်သွယ်ရန်",
+                "Contact DPS on Viber": "Viber မှတစ်ဆင့် DPS သို့ ဆက်သွယ်ရန်",
+                "Yangon": "ရန်ကုန်",
+                "Mandalay": "မန္တလေး",
+                "Naypyidaw": "နေပြည်တော်",
+                "Taikkyi": "တိုက်ကြီး",
+                "South Dagon": "တောင်ဒဂုံ",
+                "Hlaingtharyar (West)": "လှိုင်သာယာ (အနောက်ပိုင်း)",
+                "Kyaukse": "ကျောက်ဆည်",
+                "Pyin Oo Lwin": "ပြင်ဦးလွင်",
+                "Meiktila": "မိတ္ထီလာ",
+                "Kyaukpadaung": "ကျောက်ပန်းတောင်း",
+                "Bagan": "ပုဂံ",
+                "Pathein": "ပုသိမ်",
+                "Hinthada": "ဟင်္သာတ",
+                "Maubin": "မအူပင်",
+                "Mawlamyinegyun": "မော်လမြိုင်ကျွန်း",
+                "Pyapon": "ဖျာပုံ",
+                "Sinbaungwe": "ဆင်ပေါင်ဝဲ",
+                "Chauk Gyi": "ချောက်ကြီး",
+                "Sagu": "စကု",
+                "Chauk": "ချောက်",
+                "Magway": "မကွေး",
+                "Yenangyaung": "ရေနံချောင်း",
+                "Bago": "ပဲခူး",
+                "Thanatpin": "သနပ်ပင်",
+                "Pyinzaloke": "ပိန်းဇလုပ်",
+                "Minhla": "မင်းလှ",
+                "Pyay": "ပြည်",
+                "Taungoo": "တောင်ငူ",
+                "Yedashe": "ရေတာရှည်",
+                "Sagaing": "စစ်ကိုင်း",
+                "Homalin": "ဟုမ္မလင်း",
+                "Banmauk": "ဗန်းမောက်",
+                "Shwebo": "ရွှေဘို",
+                "Mingin": "မင်းကင်း",
+                "Kawthaung": "ကော့သောင်း",
+                "Myeik": "မြိတ်",
+                "Dawei": "ထားဝယ်",
+                "Hpakant": "ဖားကန့်",
+                "Myitkyina": "မြစ်ကြီးနား",
+                "Myawaddy": "မြဝတီ",
+                "Mawlamyine": "မော်လမြိုင်",
+                "Sittwe": "စစ်တွေ",
+                "Taunggyi": "တောင်ကြီး",
+                "Hopong": "ဟိုပုံး",
+                "Nyaungshwe": "ညောင်ရွှေ",
+                "Loilen": "လွိုင်လင်",
+                "Hsi Hseng": "ဆီဆိုင်",
+                "Kengtung": "ကျိုင်းတုံ",
+                "Tachileik": "တာချီလိတ်",
+                "Kokang": "ကိုးကန့်",
+                "Lashio": "လားရှိုး",
+                "Hmawbi": "မှော်ဘီ",
+                "Dagon Myothit": "ဒဂုံမြို့သစ်",
+                "Insein": "အင်းစိန်",
+                "Kamayut": "ကမာရွတ်",
+                "Twante": "တွံတေး",
+                "Botahtaung": "ဗိုလ်တထောင်",
+                "Mingaladon": "မင်္ဂလာဒုံ",
+                "Nyaung-U": "ညောင်ဦး",
+                "Kyonpyaw": "ကျုံပျော်",
+                "Thayet": "သရက်",
+                "Katha": "ကသာ",
+                "Bokpyin": "ဘုတ်ပြင်း",
+                "Bhamo": "ဗန်းမော်",
+                "Tiddim": "တီးတိန်",
+                "Yangon Region": "ရန်ကုန်တိုင်းဒေသကြီး",
+                "Mandalay Region": "မန္တလေးတိုင်းဒေသကြီး",
+                "Naypyidaw Union Territory": "နေပြည်တော် ပြည်ထောင်စုနယ်မြေ",
+                "Ayeyarwady Region": "ဧရာဝတီတိုင်းဒေသကြီး",
+                "Bago Region": "ပဲခူးတိုင်းဒေသကြီး",
+                "Chin State": "ချင်းပြည်နယ်",
+                "Kachin State": "ကချင်ပြည်နယ်",
+                "Kayah State": "ကယားပြည်နယ်",
+                "Kayin State": "ကရင်ပြည်နယ်",
+                "Magway Region": "မကွေးတိုင်းဒေသကြီး",
+                "Mon State": "မွန်ပြည်နယ်",
+                "Rakhine State": "ရခိုင်ပြည်နယ်",
+                "Sagaing Region": "စစ်ကိုင်းတိုင်းဒေသကြီး",
+                "Shan State": "ရှမ်းပြည်နယ်",
+                "Tanintharyi Region": "တနင်္သာရီတိုင်းဒေသကြီး",
+                "Yangon Districts": "ရန်ကုန်ခရိုင်များ",
+                "Mandalay Districts": "မန္တလေးခရိုင်များ",
+                "Ayeyarwady Districts": "ဧရာဝတီတိုင်းခရိုင်များ",
+                "Magway Districts": "မကွေးတိုင်းခရိုင်များ",
+                "Sagaing Districts": "စစ်ကိုင်းတိုင်းခရိုင်များ",
+                "Tanintharyi Districts": "တနင်္သာရီတိုင်းခရိုင်များ",
+                "Kachin Districts": "ကချင်ပြည်နယ်ခရိုင်များ",
+                "Chin Districts": "ချင်းပြည်နယ်ခရိုင်များ",
+                "Yangon Cities": "ရန်ကုန်တိုင်းမြို့များ",
+                "Mandalay Cities": "မန္တလေးတိုင်းမြို့များ",
+                "Ayeyarwady Cities": "ဧရာဝတီတိုင်းမြို့များ",
+                "Magway Cities": "မကွေးတိုင်းမြို့များ",
+                "Bago Cities": "ပဲခူးတိုင်းမြို့များ",
+                "Sagaing Cities": "စစ်ကိုင်းတိုင်းမြို့များ",
+                "Tanintharyi Cities": "တနင်္သာရီတိုင်းမြို့များ",
+                "Kachin State": "ကချင်ပြည်နယ်",
+                "Kayin State": "ကရင်ပြည်နယ်",
+                "Mon State": "မွန်ပြည်နယ်",
+                "Rakhine State": "ရခိုင်ပြည်နယ်",
+                "Southern Shan State": "ရှမ်းပြည်နယ်တောင်ပိုင်း",
+                "Eastern Shan State": "ရှမ်းပြည်နယ်အရှေ့ပိုင်း",
+                "Northern Shan State": "ရှမ်းပြည်နယ်မြောက်ပိုင်း"
+            };
+            const reverseTranslations = new Map(
+                Object.entries(translations).map(([english, burmese]) => [burmese, english])
+            );
+            const originalText = new WeakMap();
+            const originalAttributes = new WeakMap();
+            let language = "en";
+
+            function translate(text) {
+                const trimmed = text.trim();
+                if (!trimmed) return text;
+                let result = language === "my" ? translations[trimmed] : reverseTranslations.get(trimmed);
+                if (!result) {
+                    const matchers = [
+                        language === "my"
+                            ? [/^(.+) Map$/, "$1 မြေပုံ"]
+                            : [/^(.+) မြေပုံ$/, "$1 Map"],
+                        language === "my"
+                            ? [/^Map for (.+)$/, "$1 အတွက် မြေပုံ"]
+                            : [/^(.+) အတွက် မြေပုံ$/, "Map for $1"],
+                        language === "my"
+                            ? [/^Popular map for (.+)$/, "$1 အတွက် လူကြိုက်များသောမြေပုံ"]
+                            : [/^(.+) အတွက် လူကြိုက်များသောမြေပုံ$/, "Popular map for $1"],
+                        language === "my"
+                            ? [/^(.+) District$/, "$1 ခရိုင်"]
+                            : [/^(.+) ခရိုင်$/, "$1 District"],
+                        language === "my"
+                            ? [/^(.+) City$/, "$1 မြို့"]
+                            : [/^(.+) မြို့$/, "$1 City"],
+                        language === "my"
+                            ? [/^(.+) Township$/, "$1 မြို့နယ်"]
+                            : [/^(.+) မြို့နယ်$/, "$1 Township"],
+                        language === "my"
+                            ? [/^Total price: (.+)$/, "စုစုပေါင်းဈေးနှုန်း: $1"]
+                            : [/^စုစုပေါင်းဈေးနှုန်း: (.+)$/, "Total price: $1"],
+                        language === "my"
+                            ? [/^Rate: (.+) per sq ft\. Select a map size to calculate the total\.$/, "နှုန်းထား: တစ်စတုရန်းပေလျှင် $1။ စုစုပေါင်းတွက်ရန် မြေပုံအရွယ်အစားကို ရွေးချယ်ပါ။"]
+                            : [/^နှုန်းထား: တစ်စတုရန်းပေလျှင် (.+)။ စုစုပေါင်းတွက်ရန် မြေပုံအရွယ်အစားကို ရွေးချယ်ပါ။$/, "Rate: $1 per sq ft. Select a map size to calculate the total."],
+                        language === "my"
+                            ? [/^Rate: (.+) per sq ft\. Enter width and height to calculate the total\.$/, "နှုန်းထား: တစ်စတုရန်းပေလျှင် $1။ စုစုပေါင်းတွက်ရန် အကျယ်နှင့် အမြင့်ကို ထည့်ပါ။"]
+                            : [/^နှုန်းထား: တစ်စတုရန်းပေလျှင် (.+)။ စုစုပေါင်းတွက်ရန် အကျယ်နှင့် အမြင့်ကို ထည့်ပါ။$/, "Rate: $1 per sq ft. Enter width and height to calculate the total."]
+                    ];
+                    for (const [pattern, replacement] of matchers) {
+                        const found = trimmed.match(pattern);
+                        if (found) {
+                            let value = found[1];
+                            if (language === "my") {
+                                value = translations[value] || value;
+                            } else {
+                                value = reverseTranslations.get(value) || value;
+                            }
+                            if (language === "my") {
+                                value = value
+                                    .replace(/\bper sq ft\b/gi, "တစ်စတုရန်းပေလျှင်")
+                                    .replace(/\bsq ft\b/gi, "စတုရန်းပေ")
+                                    .replace(/\bcustom dimensions\b/gi, "စိတ်ကြိုက်အတိုင်းအတာ")
+                                    .replace(/\bft\b/gi, "ပေ")
+                                    .replace(/\bMMK\b/g, "ကျပ်");
+                            } else {
+                                value = value
+                                    .replace(/တစ်စတုရန်းပေလျှင်/g, "per sq ft")
+                                    .replace(/စတုရန်းပေ/g, "sq ft")
+                                    .replace(/စိတ်ကြိုက်အတိုင်းအတာ/g, "Custom dimensions")
+                                    .replace(/ပေ/g, "ft")
+                                    .replace(/ကျပ်/g, "MMK");
+                            }
+                            result = replacement.replace("$1", language === "my" ? (translations[value] || value) : (reverseTranslations.get(value) || value));
+                            break;
+                        }
+                    }
+                }
+                return result ? text.replace(trimmed, result) : text;
+            }
+
+            function translateTextNode(node) {
+                if (!node.parentElement || node.parentElement.closest("[data-en][data-my]")) return;
+                const english = originalText.get(node) ?? node.nodeValue;
+                originalText.set(node, english);
+                const localized = translate(english);
+                if (node.nodeValue !== localized) node.nodeValue = localized;
+            }
+
+            function translateAttributes(element) {
+                ["placeholder", "aria-label", "alt", "title"].forEach((attribute) => {
+                    if (!element.hasAttribute(attribute)) return;
+                    let values = originalAttributes.get(element);
+                    if (!values) {
+                        values = {};
+                        originalAttributes.set(element, values);
+                    }
+                    const current = element.getAttribute(attribute);
+                    const key = `${attribute}Rendered`;
+                    const english = values[key] === current ? values[attribute] : current;
+                    values[attribute] = english;
+                    values[key] = translate(english);
+                    if (current !== values[key]) element.setAttribute(attribute, values[key]);
+                });
+            }
+
+            function localizePage(nextLanguage) {
+                language = nextLanguage === "my" ? "my" : "en";
+                document.documentElement.lang = language;
+                document.title = language === "my" ? "မြန်မာနိုင်ငံမြေပုံများ ဒေါင်းလုဒ်ရယူရန် | DPS Map" : "Download Myanmar Maps | DPS Map";
+                document.querySelectorAll("[data-en][data-my]").forEach((element) => {
+                    element.textContent = element.dataset[language];
+                });
+                const walker = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT);
+                let textNode;
+                while ((textNode = walker.nextNode())) translateTextNode(textNode);
+                document.querySelectorAll("[placeholder], [aria-label], [alt], [title]").forEach(translateAttributes);
+                document.querySelectorAll(".language-button").forEach((button) => {
+                    button.setAttribute("aria-pressed", String(button.lang === language));
+                });
+            }
+
+            const observer = new MutationObserver((records) => {
+                records.forEach((record) => {
+                    if (record.type === "characterData") {
+                        translateTextNode(record.target);
+                    } else if (record.type === "attributes") {
+                        translateAttributes(record.target);
+                    } else {
+                        record.addedNodes.forEach((node) => {
+                            if (node.nodeType === Node.TEXT_NODE) {
+                                translateTextNode(node);
+                            } else if (node.nodeType === Node.ELEMENT_NODE) {
+                                const walker = document.createTreeWalker(node, NodeFilter.SHOW_TEXT);
+                                let textNode;
+                                while ((textNode = walker.nextNode())) translateTextNode(textNode);
+                                if (node.matches("[placeholder], [aria-label], [alt], [title]")) translateAttributes(node);
+                                node.querySelectorAll("[placeholder], [aria-label], [alt], [title]").forEach(translateAttributes);
+                            }
+                        });
+                    }
+                });
+            });
+            observer.observe(document.body, { subtree: true, childList: true, characterData: true, attributes: true, attributeFilter: ["placeholder", "aria-label", "alt", "title"] });
+
+            document.querySelectorAll(".language-button").forEach((button) => {
+                button.addEventListener("click", () => localizePage(button.lang));
+            });
+
+            localizePage("en");
+        })();
+    </script>
+
+</body>
+</html>
