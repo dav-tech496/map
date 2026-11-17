@@ -1,4 +1,14 @@
 // Dropdown behavior
+const dropdownInitialLabels = {
+  mapText: "Myanmar Map",
+  districtText: "District",
+  regionText: "Region / State",
+  townshipText: "Township",
+  cityText: "City"
+};
+function resetDropdownLabel(id) {
+  document.getElementById(id).textContent = dropdownInitialLabels[id];
+}
 function toggleDropdown(id) {
   const current = document.getElementById(id);
   const isOpen = current.classList.contains("show");
@@ -73,12 +83,32 @@ const cityImages = {
 };
 let currentMapLanguage = "en";
 let currentMapSource = "assets/maps/myanmar-english.jpg";
+function showUnavailableMap(title, showPopup = true) {
+  const image = document.getElementById("selectedImage");
+  image.onerror = null;
+  image.hidden = true;
+  currentMapSource = "";
+  document.getElementById("mapDialog").classList.remove("download-flow-only");
+  document.getElementById("imageTitle").textContent = title;
+  document.getElementById("imageCaption").textContent = "No map image is available for this selection.";
+  document.getElementById("imageCaption").hidden = false;
+  document.getElementById("downloadActions").hidden = true;
+  document.getElementById("downloadForms").hidden = true;
+  document.getElementById("kpayPanel").hidden = true;
+  document.getElementById("freeDownloadForm").hidden = true;
+  document.getElementById("requestDownloadForm").hidden = true;
+  document.getElementById("downloadFormStatus").textContent = "";
+  const dialog = document.getElementById("mapDialog");
+  if (showPopup && !dialog.open) dialog.showModal();
+}
 function setImage(src, title, caption, alt, showPopup = true) {
   document.getElementById("mapDialog").classList.remove("download-flow-only");
   const image = document.getElementById("selectedImage");
   image.hidden = false;
   document.getElementById("imageCaption").hidden = false;
-  image.onerror = () => { image.onerror = null; currentMapSource = "assets/maps/myanmar-" + (currentMapLanguage === "my" ? "burmese" : "english") + ".jpg"; image.src = currentMapSource; };
+  image.onerror = () => {
+    if (currentMapSource === src) showUnavailableMap(title, false);
+  };
   currentMapSource = src;
   image.src = src;
   image.alt = alt;
@@ -95,7 +125,7 @@ function setImage(src, title, caption, alt, showPopup = true) {
 function selectMap(language) {
   currentMapLanguage = language;
   const label = language === "my" ? "Myanmar" : "English";
-  document.getElementById("mapText").textContent = label;
+  resetDropdownLabel("mapText");
   const caption = language === "my" ? "မြန်မာနိုင်ငံမြေပုံ" : "Map of Myanmar";
   setImage(`assets/maps/myanmar-${language === "my" ? "burmese" : "english"}.jpg`, label + " — Myanmar Map", caption, caption);
   document.querySelectorAll(".dropdown-content").forEach(menu => menu.classList.remove("show"));
@@ -108,8 +138,8 @@ function showPlace(name, type) {
   const file = type === "district" ? districtImages[name] : cityImages[name];
   const title = name + (type === "district" ? " District" : " City");
   if (file) setImage("assets/" + folder + encodeURI(file), title, "Map for " + name, title);
-  else setImage("assets/maps/myanmar-" + (currentMapLanguage === "my" ? "burmese" : "english") + ".jpg", title, "A separate map image for this place was not found in the supplied assets.", title);
-  document.getElementById(type + "Text").textContent = name;
+  else showUnavailableMap(title);
+  resetDropdownLabel(type + "Text");
   document.querySelectorAll(".dropdown-content").forEach(menu => menu.classList.remove("show"));
 }
 function selectDistrict(name) { showPlace(name, "district"); }
@@ -155,16 +185,17 @@ function addLocationOptions(containerId, names, callbackName, labelMap = {}) {
   }
 }
 function selectRegion(name) {
-  const entries = regionMaps[name] || []; document.getElementById("regionText").textContent = name;
+  const entries = regionMaps[name] || [];
   if (entries.length) setImage(entries[0][0], name + " Map", entries[0][1], entries[0][1]);
-  else setImage("assets/maps/myanmar-" + (currentMapLanguage === "my" ? "burmese" : "english") + ".jpg", name + " Map", "No map image is available for this selection.", name);
+  else showUnavailableMap(name + " Map");
+  resetDropdownLabel("regionText");
   document.querySelectorAll(".dropdown-content").forEach(menu => menu.classList.remove("show"));
 }
 function selectTownship(name) {
   const entries = townshipMaps[name] || []; const label = townshipEnglishNames[name] || name;
-  document.getElementById("townshipText").textContent = label;
   if (entries.length) setImage(entries[0].src, label + " Map", entries[0].caption, entries[0].caption);
-  else setImage("assets/maps/myanmar-" + (currentMapLanguage === "my" ? "burmese" : "english") + ".jpg", label + " Map", "No map image is available for this selection.", name);
+  else showUnavailableMap(label + " Map");
+  resetDropdownLabel("townshipText");
   document.querySelectorAll(".dropdown-content").forEach(menu => menu.classList.remove("show"));
 }
 addLocationOptions("regionOptions", Object.keys(regionMaps), "selectRegion");
@@ -240,6 +271,29 @@ document.addEventListener("click", event => {
     searchInput.setAttribute("aria-expanded", "false");
   }
 });
+
+function clearSelection() {
+  document.getElementById("searchInput").value = "";
+  searchResults.hidden = true;
+  searchInput.setAttribute("aria-expanded", "false");
+  document.querySelectorAll(".place-option").forEach(button => { button.hidden = false; });
+  currentMapLanguage = "en";
+  document.getElementById("mapText").textContent = "Myanmar Map";
+  document.getElementById("regionText").textContent = "Region / State";
+  document.getElementById("townshipText").textContent = "Township";
+  document.getElementById("districtText").textContent = "District";
+  document.getElementById("cityText").textContent = "City";
+  setImage("assets/maps/myanmar-english.jpg", "Myanmar Map", "Map of Myanmar", "Map of Myanmar", false);
+  document.querySelectorAll(".dropdown-content").forEach(menu => menu.classList.remove("show"));
+  document.getElementById("downloadActions").hidden = true;
+  document.getElementById("downloadForms").hidden = true;
+  document.getElementById("kpayPanel").hidden = true;
+  document.getElementById("freeDownloadForm").reset();
+  document.getElementById("requestDownloadForm").reset();
+  updateRequestPrice();
+  document.getElementById("downloadFormStatus").textContent = "";
+  closeMapPopup();
+}
 
 function closeMapPopup() {
   const dialog = document.getElementById("mapDialog");
@@ -374,4 +428,3 @@ function hideKpayPanel() {
   const caption = document.getElementById("imageCaption").textContent;
   setImage(currentMapSource, title, caption, title);
 }
-

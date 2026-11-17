@@ -133,7 +133,7 @@
     </div>
 </div>
     <!-- City -->
-<div class="dropdown">
+<div class="dropdown" id="cityDropdown">
 
     <button class="dropdown-btn"
         onclick="toggleDropdown('cityOptions')">
@@ -259,11 +259,11 @@
 
 </div>
 
-    <div class="dropdown">
+    <div class="dropdown" id="regionDropdown">
       <button class="dropdown-btn" onclick="toggleDropdown('regionOptions')"><span id="regionText">Region / State</span><span class="arrow">▼</span></button>
       <div class="dropdown-content district-list" id="regionOptions" aria-label="Regions and states"></div>
     </div>
-    <div class="dropdown">
+    <div class="dropdown" id="townshipDropdown">
       <button class="dropdown-btn" onclick="toggleDropdown('townshipOptions')"><span id="townshipText">Township</span><span class="arrow">▼</span></button>
       <div class="dropdown-content district-list" id="townshipOptions" aria-label="Townships"></div>
     </div>

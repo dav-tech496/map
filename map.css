@@ -297,7 +297,10 @@ main { padding-top: 60px; }
 .popular-card:hover .popular-card-overlay,
 .popular-card:focus-visible .popular-card-overlay { opacity: 1; }
 .popular-card-label { display: block; padding: 12px; font-size: 14px; font-weight: 700; }
-.search-container { max-width: 980px; margin-top: 24px; }
+.search-container { display: flex; flex-direction: column; max-width: 980px; margin-top: 24px; }
+#regionDropdown { order: 4; }
+#townshipDropdown { order: 5; }
+#cityDropdown { order: 6; }
 .shared-form-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
 .shared-download-form { gap: 14px; }
 .shared-form-grid label { display: grid; gap: 6px; color: #334155; font-size: 14px; text-align: left; }
