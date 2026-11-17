@@ -241,28 +241,6 @@ document.addEventListener("click", event => {
   }
 });
 
-function clearSelection() {
-  document.getElementById("searchInput").value = "";
-  searchResults.hidden = true;
-  searchInput.setAttribute("aria-expanded", "false");
-  document.querySelectorAll(".place-option").forEach(button => { button.hidden = false; });
-  document.getElementById("mapText").textContent = currentMapLanguage === "my" ? "Myanmar" : "English";
-  document.getElementById("regionText").textContent = "Region / State";
-  document.getElementById("townshipText").textContent = "Township";
-  document.getElementById("districtText").textContent = "District";
-  document.getElementById("cityText").textContent = "City";
-  setImage("assets/maps/myanmar-" + (currentMapLanguage === "my" ? "burmese" : "english") + ".jpg", "Myanmar Map", currentMapLanguage === "my" ? "မြန်မာနိုင်ငံမြေပုံ" : "Map of Myanmar", "Map of Myanmar", false);
-  document.querySelectorAll(".dropdown-content").forEach(menu => menu.classList.remove("show"));
-  document.getElementById("downloadActions").hidden = true;
-  document.getElementById("downloadForms").hidden = true;
-  document.getElementById("kpayPanel").hidden = true;
-  document.getElementById("freeDownloadForm").reset();
-  document.getElementById("requestDownloadForm").reset();
-  updateRequestPrice();
-  document.getElementById("downloadFormStatus").textContent = "";
-  closeMapPopup();
-}
-
 function closeMapPopup() {
   const dialog = document.getElementById("mapDialog");
   if (dialog.open) dialog.close();

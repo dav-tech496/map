@@ -232,20 +232,6 @@ body {
 .district-group button { margin-top: 0; }
 @media (max-width: 600px) { .map-viewer { width: 94%; } .map-viewer h2 { font-size: 18px; } }
 
-.clear-button {
-    display: block;
-    width: 100%;
-    min-height: 38px;
-    margin: 0 0 12px;
-    border: 1px solid #ccc;
-    border-radius: 6px;
-    background: #f7f7f7;
-    color: #333;
-    font: inherit;
-    cursor: pointer;
-}
-.clear-button:hover { background: #eee; }
-
 .map-dialog {
     width: min(92vw, 1000px);
     max-width: none;
@@ -353,7 +339,7 @@ body { min-width: 320px; overflow-x: clip; }
   .popular-heading h1 { font-size: 27px; }
   .popular-heading > p:last-child { line-height: 1.45; }
   .search-container { width: auto; max-width: none; margin: 18px 14px 28px; }
-  .search-box, .dropdown-btn, .clear-button { min-height: 46px; height: auto; font-size: 16px; }
+  .search-box, .dropdown-btn { min-height: 46px; height: auto; font-size: 16px; }
   .dropdown-content button { min-height: 44px; font-size: 15px; }
   .map-dialog, .map-dialog.download-flow-only { width: calc(100vw - 20px); max-width: none; max-height: calc(100dvh - 20px); padding: 12px; border-radius: 12px; }
   .map-dialog img { max-height: 42dvh; }
