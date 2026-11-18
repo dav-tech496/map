@@ -173,7 +173,18 @@ const regionMaps = {
       "Tanintharyi Region": [["assets/regions/tanintharyi.jpg", "Tanintharyi Region"]]
     };
 const townshipNames = ["ပဲခူးမြို့နယ်","ဘူတာလင်မြို့နယ်","မှော်ဘီမြို့နယ်","မြစ်ကြီးနားမြို့နယ်","ဟင်္သာတမြို့နယ်","ကလေးမြို့နယ်","ကဝမြို့နယ်","မိတ္ထီလာမြို့နယ်","မိုင်းဆတ်မြို့နယ်","မြောက်ဦးမြို့နယ်","မြဝတီမြို့နယ်","ညောင်လေးပင်မြို့နယ်","စစ်ကိုင်းမြို့နယ်","ဆောမြို့နယ်","ဆိပ်ဖြူမြို့နယ်","တွံတေးမြို့နယ်","ပျော်ဘွယ်မြို့နယ်","ပြင်ဦးလွင်မြို့နယ်","ရွှေကျင်မြို့နယ်","တံတားဦးမြို့နယ်","ရမည်းသင်းမြို့နယ်","ဖလမ်းမြို့နယ်","ဟားခါးမြို့နယ်","ဟိုပုန်းမြို့နယ်","ဖားကန့်မြို့နယ်","မတူပီမြို့နယ်","မုံရွာမြို့နယ်","ပန်းတနော်မြို့နယ်","ပုသိမ်မြို့နယ်","ပင်းတယမြို့နယ်","တောင်ကြီးမြို့နယ်","တောင်ငူမြို့နယ်","သပိတ်ကျင်းမြို့နယ်","ထန်တလန်မြို့နယ်","ဝမ်းတွင်းမြို့နယ်","ရေတာရှည်မြို့နယ်","ပေါက်ခေါင်းမြို့နယ်","ပေါင်းတည်မြို့နယ်","ပြည်မြို့နယ်","ရွှေတောင်မြို့နယ်","သဲကုန်းမြို့နယ်","ဟမ္မလင်းမြို့နယ်","ရွာငံမြို့နယ်","စလင်းမြို့နယ်","ဆီဆိုင်မြို့နယ်","ပင်လောင်းမြို့နယ်","ရပ်စောက်မြို့နယ်"];
-const townshipEnglishNames = {"ပဲခူးမြို့နယ်":"Bago Township","ဘူတာလင်မြို့နယ်":"Budalin Township","မှော်ဘီမြို့နယ်":"Hmawbi Township","မြစ်ကြီးနားမြို့နယ်":"Myitkyina Township","ဟင်္သာတမြို့နယ်":"Hinthada Township","ကလေးမြို့နယ်":"Kalay Township","ကဝမြို့နယ်":"Kawa Township","မိတ္ထီလာမြို့နယ်":"Meiktila Township","မိုင်းဆတ်မြို့နယ်":"Mong Hsat Township","မြောက်ဦးမြို့နယ်":"Mrauk-U Township","မြဝတီမြို့နယ်":"Myawaddy Township","ညောင်လေးပင်မြို့နယ်":"Nyaunglebin Township","စစ်ကိုင်းမြို့နယ်":"Sagaing Township","ဆောမြို့နယ်":"Saw Township","ဆိပ်ဖြူမြို့နယ်":"Seikphyu Township","တွံတေးမြို့နယ်":"Twante Township","ပျော်ဘွယ်မြို့နယ်":"Pyawbwe Township","ပြင်ဦးလွင်မြို့နယ်":"Pyin Oo Lwin Township","ရွှေကျင်မြို့နယ်":"Shwegyin Township","တံတားဦးမြို့နယ်":"Tada-U Township","ရမည်းသင်းမြို့နယ်":"Yamethin Township","ဖလမ်းမြို့နယ်":"Falam Township","ဟားခါးမြို့နယ်":"Hakha Township","ဟိုပုန်းမြို့နယ်":"Hopong Township","ဖားကန့်မြို့နယ်":"Hpakant Township","မတူပီမြို့နယ်":"Matupi Township","မုံရွာမြို့နယ်":"Monywa Township","ပန်းတနော်မြို့နယ်":"Pantanaw Township","ပုသိမ်မြို့နယ်":"Pathein Township","ပင်းတယမြို့နယ်":"Pindaya Township","တောင်ကြီးမြို့နယ်":"Taunggyi Township","တောင်ငူမြို့နယ်":"Taungoo Township","သပိတ်ကျင်းမြို့နယ်":"Thabeikkyin Township","ထန်တလန်မြို့နယ်":"Thantlang Township","ဝမ်းတွင်းမြို့နယ်":"Wundwin Township","ရေတာရှည်မြို့နယ်":"Yedashe Township","ပေါက်ခေါင်းမြို့နယ်":"Paukkhaung Township","ပေါင်းတည်မြို့နယ်":"Padaung Township","ပြည်မြို့နယ်":"Pyay Township","ရွှေတောင်မြို့နယ်":"Shwedaung Township","သဲကုန်းမြို့နယ်":"Thegon Township","ဟမ္မလင်းမြို့နယ်":"Homalin Township","ရွာငံမြို့နယ်":"Ywangan Township","စလင်းမြို့နယ်":"Salin Township","ဆီဆိုင်မြို့နယ်":"Hsihseng Township","ပင်လောင်းမြို့နယ်":"Pinlaung Township","ရပ်စောက်မြို့နယ်":"Yatsauk Township"};
+const townshipRegionNames = {
+  "Yangon Region": ["Hmawbi Township", "Twante Township"],
+  "Mandalay Region": ["Meiktila Township", "Pyawbwe Township", "Pyin Oo Lwin Township", "Tada-U Township", "Thabeikkyin Township", "Wundwin Township", "Yamethin Township"],
+  "Bago Region": ["Bago Township", "Nyaunglebin Township", "Paukkhaung Township", "Pyay Township", "Yedashe Township"],
+  "Ayeyarwady Region": ["Hinthada Township", "Pantanaw Township", "Pathein Township"],
+  "Shan State": ["Hopong Township", "Pindaya Township", "Ywangan Township", "Hsihseng Township"],
+  "Sagaing Region": ["Sagaing Township", "Homalin Township"],
+  "Kachin State": ["Hpakant Township", "Myitkyina Township"],
+  "Magway Region": ["Saw Township", "Seikphyu Township", "Salin Township"],
+  "Chin State": ["Falam Township", "Hakha Township", "Matupi Township", "Thantlang Township"]
+};
+const townshipEnglishNames =  {"ပဲခူးမြို့နယ်":"Bago Township","ဘူတာလင်မြို့နယ်":"Budalin Township","မှော်ဘီမြို့နယ်":"Hmawbi Township","မြစ်ကြီးနားမြို့နယ်":"Myitkyina Township","ဟင်္သာတမြို့နယ်":"Hinthada Township","ကလေးမြို့နယ်":"Kalay Township","ကဝမြို့နယ်":"Kawa Township","မိတ္ထီလာမြို့နယ်":"Meiktila Township","မိုင်းဆတ်မြို့နယ်":"Mong Hsat Township","မြောက်ဦးမြို့နယ်":"Mrauk-U Township","မြဝတီမြို့နယ်":"Myawaddy Township","ညောင်လေးပင်မြို့နယ်":"Nyaunglebin Township","စစ်ကိုင်းမြို့နယ်":"Sagaing Township","ဆောမြို့နယ်":"Saw Township","ဆိပ်ဖြူမြို့နယ်":"Seikphyu Township","တွံတေးမြို့နယ်":"Twante Township","ပျော်ဘွယ်မြို့နယ်":"Pyawbwe Township","ပြင်ဦးလွင်မြို့နယ်":"Pyin Oo Lwin Township","ရွှေကျင်မြို့နယ်":"Shwegyin Township","တံတားဦးမြို့နယ်":"Tada-U Township","ရမည်းသင်းမြို့နယ်":"Yamethin Township","ဖလမ်းမြို့နယ်":"Falam Township","ဟားခါးမြို့နယ်":"Hakha Township","ဟိုပုန်းမြို့နယ်":"Hopong Township","ဖားကန့်မြို့နယ်":"Hpakant Township","မတူပီမြို့နယ်":"Matupi Township","မုံရွာမြို့နယ်":"Monywa Township","ပန်းတနော်မြို့နယ်":"Pantanaw Township","ပုသိမ်မြို့နယ်":"Pathein Township","ပင်းတယမြို့နယ်":"Pindaya Township","တောင်ကြီးမြို့နယ်":"Taunggyi Township","တောင်ငူမြို့နယ်":"Taungoo Township","သပိတ်ကျင်းမြို့နယ်":"Thabeikkyin Township","ထန်တလန်မြို့နယ်":"Thantlang Township","ဝမ်းတွင်းမြို့နယ်":"Wundwin Township","ရေတာရှည်မြို့နယ်":"Yedashe Township","ပေါက်ခေါင်းမြို့နယ်":"Paukkhaung Township","ပေါင်းတည်မြို့နယ်":"Padaung Township","ပြည်မြို့နယ်":"Pyay Township","ရွှေတောင်မြို့နယ်":"Shwedaung Township","သဲကုန်းမြို့နယ်":"Thegon Township","ဟမ္မလင်းမြို့နယ်":"Homalin Township","ရွာငံမြို့နယ်":"Ywangan Township","စလင်းမြို့နယ်":"Salin Township","ဆီဆိုင်မြို့နယ်":"Hsihseng Township","ပင်လောင်းမြို့နယ်":"Pinlaung Township","ရပ်စောက်မြို့နယ်":"Yatsauk Township"};
 const townshipMaps = {"ပဲခူးမြို့နယ်":[{"src":"assets/townships/township-001.jpg","caption":"ပဲခူးမြို့နယ်"}],"ဘူတာလင်မြို့နယ်":[],"မှော်ဘီမြို့နယ်":[{"src":"assets/townships/township-002.jpg","caption":"မှော်ဘီမြို့နယ်"}],"မြစ်ကြီးနားမြို့နယ်":[{"src":"assets/townships/township-003.jpg","caption":"မြစ်ကြီးနားမြို့နယ်"}],"ဟင်္သာတမြို့နယ်":[],"ကလေးမြို့နယ်":[],"ကဝမြို့နယ်":[],"မိတ္ထီလာမြို့နယ်":[{"src":"assets/townships/township-004.jpg","caption":"မိတ္ထီလာမြို့နယ်"}],"မိုင်းဆတ်မြို့နယ်":[],"မြောက်ဦးမြို့နယ်":[],"မြဝတီမြို့နယ်":[{"src":"assets/townships/township-005.jpg","caption":"မြဝတီမြို့နယ်"}],"ညောင်လေးပင်မြို့နယ်":[{"src":"assets/townships/township-006.jpg","caption":"ညောင်လေးပင်မြို့နယ်"}],"စစ်ကိုင်းမြို့နယ်":[{"src":"assets/townships/township-007.jpg","caption":"စစ်ကိုင်းမြို့နယ်"}],"ဆောမြို့နယ်":[{"src":"assets/townships/township-008.jpg","caption":"ဆောမြို့နယ်"}],"ဆိပ်ဖြူမြို့နယ်":[{"src":"assets/townships/township-009.jpg","caption":"ဆိပ်ဖြူမြို့နယ်"}],"တွံတေးမြို့နယ်":[{"src":"assets/townships/township-010.jpg","caption":"တွံတေးမြို့နယ်"}],"ပျော်ဘွယ်မြို့နယ်":[{"src":"assets/townships/township-011.jpg","caption":"ပျော်ဘွယ်မြို့နယ်"}],"ပြင်ဦးလွင်မြို့နယ်":[{"src":"assets/townships/township-012.jpg","caption":"ပြင်ဦးလွင်မြို့နယ်"}],"ရွှေကျင်မြို့နယ်":[],"တံတားဦးမြို့နယ်":[{"src":"assets/townships/township-013.jpg","caption":"တံတားဦးမြို့နယ်"}],"ရမည်းသင်းမြို့နယ်":[{"src":"assets/townships/township-014.jpg","caption":"ရမည်းသင်းမြို့နယ်"}],"ဖလမ်းမြို့နယ်":[{"src":"assets/townships/township-015.jpg","caption":"ဖလမ်းမြို့နယ်"}],"ဟားခါးမြို့နယ်":[{"src":"assets/townships/township-016.jpg","caption":"ဟားခါးမြို့နယ်"}],"ဟိုပုန်းမြို့နယ်":[],"ဖားကန့်မြို့နယ်":[{"src":"assets/townships/township-032.jpg","caption":"ဖားကန့်မြို့နယ်"}],"မတူပီမြို့နယ်":[{"src":"assets/townships/township-017.jpg","caption":"မတူပီမြို့နယ်"}],"မုံရွာမြို့နယ်":[],"ပန်းတနော်မြို့နယ်":[{"src":"assets/townships/township-018.jpg","caption":"ပန်းတနော်မြို့နယ်"}],"ပုသိမ်မြို့နယ်":[{"src":"assets/townships/township-019.jpg","caption":"ပုသိမ်မြို့နယ်"}],"ပင်းတယမြို့နယ်":[{"src":"assets/townships/township-020.jpg","caption":"ပင်းတယမြို့နယ်"}],"တောင်ကြီးမြို့နယ်":[],"တောင်ငူမြို့နယ်":[],"သပိတ်ကျင်းမြို့နယ်":[{"src":"assets/townships/township-021.jpg","caption":"သပိတ်ကျင်းမြို့နယ်"}],"ထန်တလန်မြို့နယ်":[{"src":"assets/townships/township-022.jpg","caption":"ထန်တလန်မြို့နယ်"}],"ဝမ်းတွင်းမြို့နယ်":[{"src":"assets/townships/township-023.jpg","caption":"ဝမ်းတွင်းမြို့နယ်"}],"ရေတာရှည်မြို့နယ်":[{"src":"assets/townships/township-024.jpg","caption":"ရေတာရှည်မြို့နယ်"}],"ပေါက်ခေါင်းမြို့နယ်":[{"src":"assets/townships/township-025.jpg","caption":"ပေါက်ခေါင်းမြို့နယ်"}],"ပေါင်းတည်မြို့နယ်":[],"ပြည်မြို့နယ်":[{"src":"assets/townships/township-026.jpg","caption":"ပြည်မြို့နယ်"}],"ရွှေတောင်မြို့နယ်":[],"သဲကုန်းမြို့နယ်":[],"ဟမ္မလင်းမြို့နယ်":[{"src":"assets/townships/township-027.jpg","caption":"ဟမ္မလင်းမြို့နယ်"}],"ရွာငံမြို့နယ်":[{"src":"assets/townships/township-028.jpg","caption":"ရွာငံမြို့နယ်"}],"စလင်းမြို့နယ်":[{"src":"assets/townships/township-029.jpg","caption":"စလင်းမြို့နယ်"},{"src":"assets/townships/township-030.jpg","caption":"စလင်းမြို့နယ်"}],"ဆီဆိုင်မြို့နယ်":[{"src":"assets/townships/township-031.jpg","caption":"ဆီဆိုင်မြို့နယ်"}],"ပင်လောင်းမြို့နယ်":[],"ရပ်စောက်မြို့နယ်":[]};
 function addLocationOptions(containerId, names, callbackName, labelMap = {}) {
   const container = document.getElementById(containerId);
@@ -183,6 +194,36 @@ function addLocationOptions(containerId, names, callbackName, labelMap = {}) {
     button.dataset.searchText = `${name} ${labelMap[name] || ""}`.toLowerCase();
     button.addEventListener("click", () => window[callbackName](name)); container.append(button);
   }
+}
+function addGroupedTownshipOptions() {
+  const container = document.getElementById("townshipOptions");
+  container.replaceChildren();
+  const englishNameToMyanmarName = Object.fromEntries(
+    Object.entries(townshipEnglishNames).map(([myanmarName, englishName]) => [englishName, myanmarName])
+  );
+
+  Object.entries(townshipRegionNames).forEach(([regionName, townshipEnglishList]) => {
+    const group = document.createElement("div");
+    group.className = "district-group";
+    const heading = document.createElement("h4");
+    heading.textContent = regionName;
+    group.append(heading);
+
+    townshipEnglishList.forEach(englishTownshipName => {
+      const myanmarTownshipName = englishNameToMyanmarName[englishTownshipName];
+      if (!myanmarTownshipName) return;
+
+      const button = document.createElement("button");
+      button.type = "button";
+      button.className = "place-option";
+      button.textContent = englishTownshipName;
+      button.dataset.searchText =
+        `${myanmarTownshipName} ${englishTownshipName} ${regionName}`.toLowerCase();
+      button.addEventListener("click", () => selectTownship(myanmarTownshipName));
+      group.append(button);
+    });
+    container.append(group);
+  });
 }
 function selectRegion(name) {
   const entries = regionMaps[name] || [];
@@ -199,7 +240,7 @@ function selectTownship(name) {
   document.querySelectorAll(".dropdown-content").forEach(menu => menu.classList.remove("show"));
 }
 addLocationOptions("regionOptions", Object.keys(regionMaps), "selectRegion");
-addLocationOptions("townshipOptions", townshipNames, "selectTownship", townshipEnglishNames);
+addGroupedTownshipOptions();
 document.querySelectorAll(".district-group button").forEach(button => { button.classList.add("place-option"); button.dataset.searchText = button.textContent.toLowerCase(); });
 const searchInput = document.getElementById("searchInput");
 const searchResults = document.getElementById("searchResults");
