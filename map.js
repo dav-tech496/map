@@ -99,7 +99,10 @@ function showUnavailableMap(title, showPopup = true) {
   document.getElementById("requestDownloadForm").hidden = true;
   document.getElementById("downloadFormStatus").textContent = "";
   const dialog = document.getElementById("mapDialog");
-  if (showPopup && !dialog.open) dialog.showModal();
+  if (showPopup && !dialog.open) {
+    dialog.showModal();
+    document.body.classList.add("map-dialog-open");
+  }
 }
 function setImage(src, title, caption, alt, showPopup = true) {
   document.getElementById("mapDialog").classList.remove("download-flow-only");
@@ -120,7 +123,10 @@ function setImage(src, title, caption, alt, showPopup = true) {
   document.getElementById("freeDownloadForm").hidden = true;
   document.getElementById("requestDownloadForm").hidden = true;
   document.getElementById("downloadFormStatus").textContent = "";
-  if (showPopup && !dialog.open) dialog.showModal();
+  if (showPopup && !dialog.open) {
+    dialog.showModal();
+    document.body.classList.add("map-dialog-open");
+  }
 }
 function selectMap(language) {
   currentMapLanguage = language;
@@ -341,6 +347,10 @@ function closeMapPopup() {
   if (dialog.open) dialog.close();
 }
 
+document.getElementById("mapDialog").addEventListener("close", () => {
+  document.body.classList.remove("map-dialog-open");
+});
+
 
 
 
@@ -365,7 +375,7 @@ function showDownloadForm(kind) {
   document.getElementById("requestDownloadForm").hidden = kind !== "request";
   document.getElementById("downloadFormStatus").textContent = "";
   forms.hidden = false;
-  forms.scrollIntoView({ behavior: "smooth", block: "nearest" });
+  if (kind !== "free") forms.scrollIntoView({ behavior: "smooth", block: "nearest" });
 }
 
 const requestMapProduct = document.getElementById("requestMapProduct");
