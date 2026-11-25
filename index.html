@@ -71,7 +71,7 @@
 
         </div>
 
-        <div class="dropdown">
+        <div class="dropdown" id="districtDropdown">
 
      <button class="dropdown-btn"
         onclick="toggleDropdown('districtOptions')">
@@ -111,6 +111,7 @@
         <div class="district-group">
             <h4>Magway Districts</h4>
             <button onclick="selectDistrict('Thayet')">Thayet</button>
+            <button onclick="selectDistrict('Minn Buu')">Minn Buu</button>
         </div>
 
         <div class="district-group">
@@ -153,13 +154,19 @@
         <div class="district-group">
             <h4>Yangon Cities</h4>
             <button onclick="selectCity('Taikkyi')">Taikkyi</button>
-            <button onclick="selectCity('South Dagon')">South Dagon</button>
+            <button onclick="selectCity('Dagon Myothit South')">Dagon Myothit(South)</button>
             <button onclick="selectCity('Yangon')">Yangon</button>
-            <button onclick="selectCity('Hlaingtharyar (West)')">Hlaingtharyar (West)</button>
+            <button onclick="selectCity('Hmawbi')">Hmawbi</button>
+            <button onclick="selectCity('Kwan Chan Kone')">Kwan Chan Kone</button>
+            <button onclick="selectCity('Kawhmu')">Kawhmu</button>
+            <button onclick="selectCity('Hlegu')">Hlegu</button>
+            <button onclick="selectCity('Kyauktan')">Kyauktan</button>
+            <button onclick="selectCity('Hlaing Tharyar (West)')">Hlaing Tharyar (West)</button>
         </div>
 
         <div class="district-group">
             <h4>Mandalay Cities</h4>
+            <button onclick="selectCity('Mandalay')">Mandalay</button>
             <button onclick="selectCity('Kyaukse')">Kyaukse</button>
             <button onclick="selectCity('Pyin Oo Lwin')">Pyin Oo Lwin</button>
             <button onclick="selectCity('Meiktila')">Meiktila</button>
@@ -179,9 +186,9 @@
         <div class="district-group">
             <h4>Magway Cities</h4>
             <button onclick="selectCity('Sinbaungwe')">Sinbaungwe</button>
-            <button onclick="selectCity('Chauk Gyi')">Chauk Gyi</button>
-            <button onclick="selectCity('Sagu')">Sagu</button>
+            <button onclick="selectCity('Saw')">Saw</button>
             <button onclick="selectCity('Chauk')">Chauk</button>
+            <button onclick="selectCity('Seikphyu')">Seikphyu</button>
             <button onclick="selectCity('Magway')">Magway</button>
             <button onclick="selectCity('Yenangyaung')">Yenangyaung</button>
         </div>
@@ -190,7 +197,7 @@
             <h4>Bago Cities</h4>
             <button onclick="selectCity('Bago')">Bago</button>
             <button onclick="selectCity('Thanatpin')">Thanatpin</button>
-            <button onclick="selectCity('Pyinzaloke')">Pyinzaloke</button>
+            <button onclick="selectCity('Pyinzaluoke')">Pyinzaluoke</button>
             <button onclick="selectCity('Minhla')">Minhla</button>
             <button onclick="selectCity('Pyay')">Pyay</button>
             <button onclick="selectCity('Taungoo')">Taungoo</button>
@@ -255,7 +262,7 @@
 
         <div class="district-group">
             <h4>Northern Shan State</h4>
-            <button onclick="selectCity('Kokang')">Kokang</button>
+            <button onclick="selectCity('Kokang Self-Administered Zone')">Kokang Self-Administered Zone</button>
             <button onclick="selectCity('Lashio')">Lashio</button>
         </div>
 
@@ -472,8 +479,6 @@
                 "Mawlamyinegyun": "မော်လမြိုင်ကျွန်း",
                 "Pyapon": "ဖျာပုံ",
                 "Sinbaungwe": "ဆင်ပေါင်ဝဲ",
-                "Chauk Gyi": "ချောက်ကြီး",
-                "Sagu": "စကု",
                 "Chauk": "ချောက်",
                 "Magway": "မကွေး",
                 "Yenangyaung": "ရေနံချောင်း",

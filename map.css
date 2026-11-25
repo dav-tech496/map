@@ -303,7 +303,8 @@ main { padding-top: 60px; }
 .popular-card:focus-visible .popular-card-overlay { opacity: 1; }
 .popular-card-label { display: block; padding: 12px; font-size: 14px; font-weight: 700; }
 .search-container { display: flex; flex-direction: column; max-width: 980px; margin-top: 24px; }
-#regionDropdown { order: 4; }
+#regionDropdown { order: 2; }
+#districtDropdown { order: 3; }
 #townshipDropdown { order: 5; }
 #cityDropdown { order: 6; }
 .shared-form-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
